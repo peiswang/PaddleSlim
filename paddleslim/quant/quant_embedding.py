@@ -397,7 +397,7 @@ def _split_embedding_seq_pool(graph, op):
     out = outputs[0]
     lookup_out = graph.create_var_node(
         name=ids.name() + '.look_up_table.out',
-        var_type=paddle.framework.core.VarDesc.VarType.LOD_TENSOR,
+        var_type=paddle.framework.core.VarDesc.VarType.DENSE_TENSOR,
         shape=[1],
         var_dtype=weight.dtype())
     lookup_table_op = graph.create_op_node(
@@ -415,7 +415,7 @@ def _split_embedding_seq_pool(graph, op):
     graph.link_to(lookup_table_op, lookup_out)
     max_index = graph.create_var_node(
         name=ids.name() + '.seq_pool_op.max_index',
-        var_type=paddle.framework.core.VarDesc.VarType.LOD_TENSOR,
+        var_type=paddle.framework.core.VarDesc.VarType.DENSE_TENSOR,
         shape=[1],
         var_dtype=weight.dtype())
 

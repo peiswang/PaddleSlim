@@ -136,7 +136,7 @@ class FakeQuanterChannelWiseAbsMaxObserverLayer(BaseQuanter):
         quant_out = self._helper.create_variable(
             name=f"{input.name}.quantized.dequantized",
             dtype=input.dtype,
-            type=core.VarDesc.VarType.LOD_TENSOR,
+            type=core.VarDesc.VarType.DENSE_TENSOR,
             persistable=False,
             stop_gradient=False, )
         outputs = {"Out": [quant_out], "OutScale": [self._scale]}

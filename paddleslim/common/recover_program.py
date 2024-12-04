@@ -45,7 +45,7 @@ def _recover_outputs_attr(program):
                         unique_name.generate_with_ignorable_key(
                             ".".join(["reserve_space", 'tmp'])),
                         dtype=block.var(op.input("X")[0]).dtype,
-                        type=paddle.framework.core.VarDesc.VarType.LOD_TENSOR,
+                        type=paddle.framework.core.VarDesc.VarType.DENSE_TENSOR,
                         persistable=False,
                         stop_gradient=True)
                     op.desc.set_output("ReserveSpace", [reserve_space.name])
@@ -56,7 +56,7 @@ def _recover_outputs_attr(program):
                         unique_name.generate_with_ignorable_key(
                             ".".join(["xshape", 'tmp'])),
                         dtype=block.var(op.input("X")[0]).dtype,
-                        type=paddle.framework.core.VarDesc.VarType.LOD_TENSOR,
+                        type=paddle.framework.core.VarDesc.VarType.DENSE_TENSOR,
                         shape=(0, ) + block.var(op.input("X")[0]).shape,
                         persistable=False,
                         stop_gradient=True)
@@ -67,7 +67,7 @@ def _recover_outputs_attr(program):
                         name=paddle.utils.unique_name.
                         generate_with_ignorable_key(".".join(["mask", 'tmp'])),
                         dtype=block.var(op.input("X")[0]).dtype,
-                        type=paddle.framework.core.VarDesc.VarType.LOD_TENSOR,
+                        type=paddle.framework.core.VarDesc.VarType.DENSE_TENSOR,
                         shape=block.var(op.input("X")[0]).shape,
                         persistable=False,
                         stop_gradient=True)
